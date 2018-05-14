@@ -20,11 +20,10 @@ namespace SalmonlogCore
             var container = new CompositionContainer(catalog);
 
             // ISalmonlogNotifyPluginBaseを全部くれ頼む
-            IEnumerable<ISalmonlogNotifyPluginBase> plugins = container.GetExportedValues<ISalmonlogNotifyPluginBase>();
+            var plugins = container.GetExports<ISalmonlogNotifyPluginBase, ISalmonlogPluginMetadata>();
             foreach (var p in plugins)
             {
-                p.OnSalmonStarted();
-                p.OnSalmonFinished();
+                Console.WriteLine($"PluginName:{p.Metadata.Name}({p.Metadata.Version})");
             }
 
         }
