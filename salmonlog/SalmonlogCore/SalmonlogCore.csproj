@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,5 +49,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SalmonlogNotifyPluginBase\SalmonlogNotifyPluginBase.csproj">
+      <Project>{B5A583DB-6A57-4E68-B833-9E07FE19FD0D}</Project>
+      <Name>SalmonlogNotifyPluginBase</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>md $(TargetDir)plugin
+copy $(SolutionDir)SalmonlogNotifyPluginBase\bin\$(ConfigurationName)\SalmonlogNotifyPluginBase.dll $(TargetDir)plugin\
+copy $(SolutionDir)SalmonlogRecorder\bin\$(ConfigurationName)\SalmonlogRecorder.dll $(TargetDir)plugin\</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SalmonlogNotifyPluginBase
 {
-    public interface SalmonlogNotifyPluginBase
+    public interface ISalmonlogNotifyPluginBase
     {
         /// <summary>
         /// 通知：バイト開始
